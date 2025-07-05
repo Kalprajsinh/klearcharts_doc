@@ -1,4 +1,5 @@
 import {
+  AreaChart,
   BarChart,
   LineChart,
   PieChart,
@@ -16,7 +17,6 @@ function App() {
     { x: 1, y: 45 },
     { x: 2, y: 30 },
     { x: 3, y: 60 },
-    { x: 4, y: 40 },
     { x: 5, y: 25 },
     { x: 6, y: 55 },
     { x: 7, y: 35 },
@@ -72,23 +72,25 @@ export default App;`
               <nav className="h-15 w-full fixed top-0 left-0 z-10 bg-white/30 backdrop-blur-xs">
             <div className="flex justify-between items-center h-15 px-10 border-b border-gray-200">
             <div className="flex items-center space-x-2">
-              <img src="https://www.klearcharts.com/assets/images/klearcharts-logo.svg" alt="Klearcharts Logo" className="w-6 h-6" />
+              <img src="logo.png" alt="Klearcharts Logo" className="w-8 h-8" />
               <span className="text-xl font-semibold text-gray-900">Klearcharts</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <Link to="#features" className="text-black hover:text-gray-900 font-medium transition-colors">Features</Link>
-              <Link to="#examples" className="text-black hover:text-gray-900 font-medium transition-colors">Examples</Link>
-              <Link to="#installation" className="text-black hover:text-gray-900 font-medium transition-colors">Installation</Link>
+              <a href="#features" className="text-black hover:text-gray-900 font-medium transition-colors">Features</a>
+              <Link to="/documentation" className="text-black hover:text-gray-900 font-medium transition-colors">Examples</Link>
+              <a href="#installation" className="text-black hover:text-gray-900 font-medium transition-colors">Installation</a>
               <Link to="/documentation" className="text-black hover:text-gray-900 font-medium transition-colors">Documentation</Link>
+              <a target="_blank" href="https://github.com/Kalprajsinh/klearcharts">
               <button className="bg-gray-900 flex justify-center items-center gap-2 text-white px-4 py-2 rounded-md font-medium hover:bg-black transition-colors">
                 GitHub
                 <img src="https://img.icons8.com/ios11/512/FFFFFF/github.png" className="w-5 h-5" />
               </button>
+              </a>
             </div>
             </div>
           </nav>
-                <main className="flex flex-col items-center text-center justify-center py-24 space-y-6 pt-40">
-                  <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                <main className="flex flex-col items-center text-center justify-center space-y-6 pt-52">
+                  <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-5xl">
                     Klearcharts - SVG Chart Library
                   </h1>
                   <p className="text-xl text-gray-500 max-w-2xl">
@@ -96,22 +98,26 @@ export default App;`
                     interactive charts with easy to use.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                    <button className="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-medium rounded-md hover:bg-black transition-colors">
+                    <a href="https://www.npmjs.com/package/klearcharts">
+                    <button className="inline-flex items-center px-6 py-3 cursor-pointer bg-gray-900 text-white font-medium rounded-md hover:bg-black transition-colors">
                       <svg className="w-4 h-4 mr-2" viewBox="0 0 16 16">
                         <path fill="currentColor" d="M8 12l-4-4h3V3h2v5h3L8 12z"/>
                         <path fill="currentColor" d="M14 13v1H2v-1h12z"/>
                       </svg>
                       npm install klearcharts
                     </button>
-                    <button className="inline-flex items-center px-6 py-3 border border-gray-200 text-gray-900 font-medium rounded-md hover:border-gray-900 transition-colors">
+                    </a>
+                    <Link to="/documentation">
+                    <button className="inline-flex items-center cursor-pointer px-6 py-3 border border-gray-200 text-gray-900 font-medium rounded-md hover:border-gray-900 transition-colors">
                       <svg className="w-4 h-4 mr-2" viewBox="0 0 16 16">
                         <path fill="currentColor" d="M4 1h8v2H4V1zm0 3h8v1H4V4zm0 2h8v1H4V6zm0 2h4v1H4V8z"/>
                         <path fill="currentColor" d="M2 0v16h12V0H2zm11 15H3V1h10v14z"/>
                       </svg>
                       View Documentation
                     </button>
+                    </Link>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 mt-10">
                   <BarChart
                   data={barData}
                   width={400}
@@ -119,14 +125,15 @@ export default App;`
                   animate={true}
                 />
 
-                <LineChart data={lineData} width={400}
-                  height={250}/>
-
                 <PieChart data={pieData} width={400}
                   height={250}/>
+                <AreaChart data={lineData} width={400}
+                  height={250}/>
+
                   </div>
                 </main>
-                <section id="features" className="">
+
+                <section id="features" className="pt-20">
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                       <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Features</h2>
@@ -253,12 +260,14 @@ export default App;`
                            <p className="text-gray-600 mb-6">
                              Choose your preferred package manager and run the installation command. After installation, you can import and use any of the chart components in your application.
                            </p>
+                           <Link to="/documentation">
                            <button className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
                              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                              </svg>
                              View Full Documentation
                            </button>
+                           </Link>
                             </div>
                            <div className="">
                            <div className="flex items-center mb-6">
@@ -285,22 +294,6 @@ export default App;`
             
           </Routes>
         </div>
-                   <footer className="border-t py-4 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-              <div className="flex items-center gap-2 mb-4 md:mb-0">
-               
-                {/* <span className="text-xl font-bold">KlearCharts</span> */}
-              </div>
-              <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center">
-                
-              </div>
-              <div className="mt-4 md:mt-0">
-                <p className="text-sm text-black">
-                  © {new Date().getFullYear()} KlearCharts.
-                </p>
-              </div>
-            </div>
-          </footer>
       </div>
     </Router>
   )

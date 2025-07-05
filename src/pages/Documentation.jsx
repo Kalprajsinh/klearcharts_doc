@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from 'react-router-dom';
 import { CodeBlock, googlecode } from "react-code-blocks";
+import { useLocation } from 'react-router-dom';
 
 import {
   AreaChart,
@@ -11,7 +12,7 @@ import {
   ScatterPlot,
   Histogram,
   WaterfallChart,
-} from "../../../klearcharts";
+} from "klearcharts";
 
 const areaChartProps = [
   {
@@ -460,13 +461,25 @@ function ChartExample({ type }) {
   ]
 
   const waterfallData = [
-    { label: "Start", value: 500 },
-    { label: "Product A", value: 200 },
-    { label: "Product B", value: 150 },
-    { label: "Product C", value: -100 },
-    { label: "Tax", value: -50 },
-    { label: "Total", value: 700 },
+    { label: "Start", value: 100 },
+    { label: "step 1", value: 23 },
+    { label: "step 2", value: -38 },
+    { label: "step 3", value: -24 },
+    { label: "step 4", value: 12 },
+    { label: "step 5", value: -48 },
+    { label: "step 6", value: 15 },
+    { label: "step 7", value: -32 },
+    { label: "step 8", value: -128 },
+    { label: "step 9", value: 12 },
+    { label: "step 10", value: 42 },
+    { label: "step 11", value: 134 },
+    { label: "Total", value: 68 },
   ]
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
 
   return (
     <div className="rounded-lg bg-card p-6 mx-auto px-4 sm:px-6 lg:px-8">
@@ -531,18 +544,20 @@ export default function DocumentationPage() {
       <nav className="h-15 w-full fixed top-0 left-0 z-10 bg-white/30 backdrop-blur-xs">
             <div className="flex justify-between items-center h-15 px-10 border-b border-gray-200">
             <div className="flex items-center space-x-2">
-              <img src="https://www.klearcharts.com/assets/images/klearcharts-logo.svg" alt="Klearcharts Logo" className="w-6 h-6" />
+              <img src="logo.png" alt="Klearcharts Logo" className="w-8 h-8" />
               <span className="text-xl font-semibold text-gray-900">Klearcharts</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <Link to="#features" className="text-black hover:text-gray-900 font-medium transition-colors">Features</Link>
-              <Link to="#examples" className="text-black hover:text-gray-900 font-medium transition-colors">Examples</Link>
-              <Link to="#installation" className="text-black hover:text-gray-900 font-medium transition-colors">Installation</Link>
-              <Link to="/documentation" className="text-black hover:text-gray-900 font-medium transition-colors">Documentation</Link>
+              <Link to="/#features" className="text-black hover:text-gray-900 font-medium transition-colors">Features</Link>
+              {/* <Link to="#examples" className="text-black hover:text-gray-900 font-medium transition-colors">Examples</Link> */}
+              <Link to="/#installation" className="text-black hover:text-gray-900 font-medium transition-colors">Installation</Link>
+              {/* <Link to="/documentation" className="text-black hover:text-gray-900 font-medium transition-colors">Documentation</Link> */}
+              <a target="_blank" href="https://github.com/Kalprajsinh/klearcharts">
               <button className="bg-gray-900 flex justify-center items-center gap-2 text-white px-4 py-2 rounded-md font-medium hover:bg-black transition-colors">
                 GitHub
                 <img src="https://img.icons8.com/ios11/512/FFFFFF/github.png" className="w-5 h-5" />
               </button>
+              </a>
             </div>
               <div className="md:hidden">
             <button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)}>
@@ -842,7 +857,7 @@ function generateChartSVG() {
               <h3 className="text-xl font-semibold mt-8 mb-4">Basic Example</h3>
               <CodeSnippet
                 code={`<BarChart
-  data={[42, 54, 12, 64, 73, 13]}
+  data={[10,20,30,25,40,35,50]}
   height={300}
   width={600}
 />`}
@@ -852,7 +867,7 @@ function generateChartSVG() {
               <h3 className="text-xl font-semibold mt-8 mb-4">Customized Example</h3>
               <CodeSnippet
                 code={`<BarChart
-  data={[42, 54, 12, 64, 73, 13]}
+  data={[10,20,30,25,40,35,50]}
   height={300}
   width={600}
   barColor="#10b981"
@@ -1021,7 +1036,13 @@ function generateChartSVG() {
               <h3 className="text-xl font-semibold mt-8 mb-4">Basic Example</h3>
               <CodeSnippet
                 code={`<Histogram
-  data={[12, 15, 18, 22, 25, 26, 28, 30, 32, 35, 38, 40]}
+    data={[
+    { x: 10, label: "0-5" },
+    { x: 25, label: "5-10" },
+    { x: 15, label: "10-15" },
+    { x: 60, label: "15-20" },
+    { x: 80, label: "20-25" },
+  ]}
   height={300}
   width={600}
 />`}
@@ -1031,7 +1052,13 @@ function generateChartSVG() {
               <h3 className="text-xl font-semibold mt-8 mb-4">Customized Example</h3>
               <CodeSnippet
                 code={`<Histogram
-  data={[12, 15, 18, 22, 25, 26, 28, 30, 32, 35, 38, 40]}
+  data={[
+    { x: 10, label: "0-5" },
+    { x: 25, label: "5-10" },
+    { x: 15, label: "10-15" },
+    { x: 60, label: "15-20" },
+    { x: 80, label: "20-25" },
+    ]}
   bins={6}
   height={300}
   width={600}
@@ -1063,9 +1090,9 @@ function generateChartSVG() {
   data={[
     { label: "A", value: 35 },
     { label: "B", value: 25 },
-    { label: "C", value: 20 },
+    { label: "C", value: 15 },
     { label: "D", value: 15 },
-    { label: "E", value: 5 }
+    { label: "E", value: 10 }
   ]}
   height={300}
   width={600}
@@ -1079,9 +1106,9 @@ function generateChartSVG() {
   data={[
     { label: "A", value: 35 },
     { label: "B", value: 25 },
-    { label: "C", value: 20 },
+    { label: "C", value: 15 },
     { label: "D", value: 15 },
-    { label: "E", value: 5 }
+    { label: "E", value: 10 }
   ]}
   height={300}
   width={600}
@@ -1109,12 +1136,19 @@ function generateChartSVG() {
               <CodeSnippet
                 code={`<WaterfallChart
   data={[
-    { label: "Start", value: 500 },
-    { label: "Product A", value: 200 },
-    { label: "Product B", value: 150 },
-    { label: "Product C", value: -100 },
-    { label: "Tax", value: -50 },
-    { label: "Total", value: 700 }
+    { label: "Start", value: 100 },
+    { label: "step 1", value: 23 },
+    { label: "step 2", value: -38 },
+    { label: "step 3", value: -24 },
+    { label: "step 4", value: 12 },
+    { label: "step 5", value: -48 },
+    { label: "step 6", value: 15 },
+    { label: "step 7", value: -32 },
+    { label: "step 8", value: -128 },
+    { label: "step 9", value: 12 },
+    { label: "step 10", value: 42 },
+    { label: "step 11", value: 134 },
+    { label: "Total", value: 68 }
   ]}
   height={300}
   width={600}
@@ -1126,12 +1160,19 @@ function generateChartSVG() {
               <CodeSnippet
                 code={`<WaterfallChart
   data={[
-    { label: "Start", value: 500 },
-    { label: "Product A", value: 200 },
-    { label: "Product B", value: 150 },
-    { label: "Product C", value: -100 },
-    { label: "Tax", value: -50 },
-    { label: "Total", value: 700 }
+   { label: "Start", value: 100 },
+    { label: "step 1", value: 23 },
+    { label: "step 2", value: -38 },
+    { label: "step 3", value: -24 },
+    { label: "step 4", value: 12 },
+    { label: "step 5", value: -48 },
+    { label: "step 6", value: 15 },
+    { label: "step 7", value: -32 },
+    { label: "step 8", value: -128 },
+    { label: "step 9", value: 12 },
+    { label: "step 10", value: 42 },
+    { label: "step 11", value: 134 },
+    { label: "Total", value: 68 }
   ]}
   height={300}
   width={600}
