@@ -1,7 +1,6 @@
 import {
   AreaChart,
   BarChart,
-  LineChart,
   PieChart,
 } from "klearcharts";
 import { CodeBlock } from "react-code-blocks";
@@ -143,7 +142,7 @@ export default App;`
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                      {/* SVG-based */}
+
                       <div className="bg-white border border-gray-200 shadow-md p-6 rounded-lg">
                         <div className="flex items-center mb-4">
                           <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
@@ -158,7 +157,6 @@ export default App;`
                         </p>
                       </div>
 
-                      {/* Lightweight */}
                       <div className="bg-white border border-gray-200 shadow-md p-6 rounded-lg">
                         <div className="flex items-center mb-4">
                           <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
@@ -173,7 +171,6 @@ export default App;`
                         </p>
                       </div>
 
-                      {/* Easy Learning Curve */}
                       <div className="bg-white border border-gray-200 shadow-md p-6 rounded-lg">
                         <div className="flex items-center mb-4">
                           <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
@@ -188,7 +185,6 @@ export default App;`
                         </p>
                       </div>
 
-                      {/* Server-Side Rendering */}
                       <div className="bg-white border border-gray-200 shadow-md p-6 rounded-lg">
                         <div className="flex items-center mb-4">
                           <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
@@ -203,7 +199,6 @@ export default App;`
                         </p>
                       </div>
 
-                      {/* Multiple Chart Types */}
                       <div className="bg-white border border-gray-200 shadow-md p-6 rounded-lg">
                         <div className="flex items-center mb-4">
                           <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
@@ -218,7 +213,6 @@ export default App;`
                         </p>
                       </div>
 
-                      {/* Minimal Dependencies */}
                       <div className="bg-white border border-gray-200 shadow-md p-6 rounded-lg">
                         <div className="flex items-center mb-4">
                           <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
@@ -300,93 +294,3 @@ export default App;`
 }
 
 export default App
-
-
-// import { useState } from 'react';
-// import { CodeBlock } from 'react-code-blocks';
-// import {
-//   AreaChart,
-//   BarChart,
-//   LineChart,
-//   PieChart,
-//   ScatterPlot,
-//   Histogram,
-//   WaterfallChart,
-// } from 'klearcharts';
-
-// const Documentation = () => {
-//   const [activeSection, setActiveSection] = useState('installation');
-
-//   const sidebarItems = [
-//     { id: 'installation', label: 'Installation' },
-//     { id: 'setup', label: 'Setup' },
-//     { id: 'frameworks', label: 'Support Frameworks' },
-//     { id: 'areachart', label: 'AreaChart' },
-//     { id: 'barchart', label: 'BarChart' },
-//     { id: 'linechart', label: 'LineChart' },
-//     { id: 'piechart', label: 'PieChart' },
-//     { id: 'histogram', label: 'Histogram' },
-//     { id: 'scatterplot', label: 'ScatterPlot' },
-//     { id: 'waterfallchart', label: 'WaterfallChart' },
-//   ];
-
-//   const renderContent = () => {
-//     switch (activeSection) {
-//       case 'installation':
-//         return (
-          
-//         );
-//       case 'setup':
-//         return (
-          
-//         );
-//       case 'frameworks':
-//         return (
-          
-//         );
-//       case 'areachart':
-//         return (
-          
-//         );
-     
-//     }
-//   };
-
-//   return (
-//     <div className="flex min-h-screen">
-//       {/* Sidebar */}
-//       <div className="w-64 border-r-2">
-//         <div className="p-4">
-//           <h1 className="text-xl font-bold mb-6">Documentation</h1>
-//           <nav>
-//             <ul className="space-y-2">
-//               {sidebarItems.map((item) => (
-//                 <li key={item.id}>
-//                   <button
-//                     onClick={() => setActiveSection(item.id)}
-//                     className={`w-full text-left px-4 py-2 rounded-md transition-colors ${
-//                       activeSection === item.id
-//                         ? 'bg-blue-50 text-blue-600'
-//                         : 'text-gray-600 hover:bg-gray-50'
-//                     }`}
-//                   >
-//                     {item.label}
-//                   </button>
-//                 </li>
-//               ))}
-//             </ul>
-//           </nav>
-//         </div>
-//       </div>
-
-//       {/* Main Content */}
-//       <div className="flex-1 p-8">
-//         <div className="max-w-6xl mx-auto">
-//           {renderContent()}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Documentation; 

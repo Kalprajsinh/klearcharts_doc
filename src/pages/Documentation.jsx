@@ -180,8 +180,8 @@ const scatterPlotProps = [
 const histogramProps = [
   {
     name: "data",
-    type: "number[]",
-    description: "Array of numeric values to be binned",
+    type: "{ x: number; label: string; }[]",
+    description: "Array of bucket objects with value x and display label",
     required: true,
   },
   {
@@ -700,6 +700,16 @@ export default function DocumentationPage() {
               Basic Usage
             </button>
             <button
+              onClick={() => scrollToSection("styling")}
+              className={`text-left px-4 py-2 cursor-pointer rounded-md ${
+                activeSection === "styling"
+                  ? "bg-gray-100 font-semibold"
+                  : ""
+              }`}
+            >
+              Styling
+            </button>
+            <button
               onClick={() => scrollToSection("bar-chart")}
               className={`text-left px-4 py-2 cursor-pointer rounded-md ${
                 activeSection === "bar-chart"
@@ -771,6 +781,16 @@ export default function DocumentationPage() {
             >
               WaterfallChart
             </button>
+            <button
+              onClick={() => scrollToSection("backend-ssr")}
+              className={`text-left px-4 py-2 cursor-pointer rounded-md ${
+                activeSection === "backend-ssr"
+                  ? "bg-gray-100 font-semibold"
+                  : ""
+              }`}
+            >
+              Backend/SSR
+            </button>
           </nav>
         </aside>
 
@@ -794,6 +814,23 @@ yarn add klearcharts
 // Using pnpm
 pnpm add klearcharts`}
                 language="jsx"
+              />
+            </section>
+
+            {/* Styling */}
+            <section id="styling" className="mb-16 scroll-mt-20">
+              <h2 className="text-2xl font-bold mb-4">Styling</h2>
+              <p className="mb-4">All chart components accept <code>className</code> and <code>style</code> props for easy layout and spacing control.</p>
+              <CodeSnippet
+                code={`import { LineChart } from 'klearcharts';
+
+<LineChart
+  data={[{ x: 10, y: 20 }, { x: 25, y: 35 }]}
+  height={300}
+  width={600}
+  className="mt-6 px-4"
+  style={{ border: '1px solid #e5e7eb'}}
+/>`}
               />
             </section>
 
@@ -840,6 +877,26 @@ function generateChartSVG() {
   return svgString; // Returns SVG as a string
 }`}
               />
+            </section>
+
+            {/* Backend/SSR usage */}
+            <section id="backend-ssr" className="mb-16 scroll-mt-20">
+              <h2 className="text-2xl font-bold mb-4">Backend/SSR usage</h2>
+              <p className="mb-4">Pass <code>string={"true"}</code> to receive the raw SVG string instead of a React element. Useful for server-side rendering or APIs that return SVG.</p>
+              <CodeSnippet
+                code={`import { LineChart } from 'klearcharts';
+
+const svg = LineChart({
+  data: [
+    { x: 10, y: 20 },
+    { x: 25, y: 35 }
+  ],
+  height: 300,
+  width: 600,
+  string: true
+});`}
+              />
+              <p className="mt-4">All components support this flag: <code>BarChart</code>, <code>LineChart</code>, <code>AreaChart</code>, <code>PieChart</code>, <code>ScatterPlot</code>, <code>Histogram</code>, and <code>WaterfallChart</code>.</p>
             </section>
 
             {/* BarChart */}
